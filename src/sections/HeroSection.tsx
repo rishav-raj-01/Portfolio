@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import FadeIn from '../components/FadeIn';
+
 
 const navLinks = ['About', 'Skills', 'Projects', 'Contact'];
 
