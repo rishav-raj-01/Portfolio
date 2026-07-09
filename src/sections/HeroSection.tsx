@@ -36,7 +36,6 @@ export default function HeroSection() {
           loop={true}
           muted={true}
           playsInline={true}
-          crossOrigin="anonymous"
           className="w-full h-full object-cover opacity-60"
         />
         
