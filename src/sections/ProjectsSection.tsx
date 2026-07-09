@@ -194,33 +194,34 @@ function ProjectCard({
           </div>
 
           {/* IMAGE GRID (WITH PARALLAX) */}
-          <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-auto -mr-4 sm:-mr-6 md:-mr-8 -mb-4 sm:-mb-6 md:-mb-8 h-full md:h-auto overflow-hidden">
-            {/* Top 40% (mobile) / Left 40% (desktop) */}
-            <div className="flex flex-col gap-3 md:gap-4 w-full md:w-[40%] h-1/2 md:h-auto">
-              <div className="flex-1 md:flex-none" style={{ minHeight: '120px' }}>
-                <MockupFrame tabName="dashboard.tsx">
-                  <img
-                    src={project.col1img1}
-                    alt={`${project.name} dashboard`}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
-                  />
-                </MockupFrame>
-              </div>
-              <div className="flex-1 md:flex-none" style={{ minHeight: '140px' }}>
-                <MockupFrame tabName="pipeline.py">
-                  <img
-                    src={project.col1img2}
-                    alt={`${project.name} code`}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
-                  />
-                </MockupFrame>
-              </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 md:grid-rows-2 gap-3 md:gap-4 mt-auto -mr-4 sm:-mr-6 md:-mr-8 -mb-4 sm:-mb-6 md:-mb-8 h-full md:h-auto overflow-hidden">
+            
+            {/* img1: Dashboard (Top Left Desktop, Full Width Mobile) */}
+            <div className="col-span-2 md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-1 min-h-[140px] md:min-h-[180px]">
+              <MockupFrame tabName="dashboard.tsx">
+                <img
+                  src={project.col1img1}
+                  alt={`${project.name} dashboard`}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
+                />
+              </MockupFrame>
             </div>
 
-            {/* Bottom 60% (mobile) / Right 60% (desktop) */}
-            <div className="w-full md:w-[60%] flex-1 md:flex-none min-h-[200px] md:min-h-[272px]">
+            {/* img2: Code (Bottom Left Desktop, Half Width Mobile) */}
+            <div className="col-span-1 md:col-start-1 md:col-span-2 md:row-start-2 md:row-span-1 min-h-[140px] md:min-h-[180px]">
+              <MockupFrame tabName="pipeline.py">
+                <img
+                  src={project.col1img2}
+                  alt={`${project.name} code`}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
+                />
+              </MockupFrame>
+            </div>
+
+            {/* img3: Visualization (Right Desktop, Half Width Mobile) */}
+            <div className="col-span-1 md:col-start-3 md:col-span-3 md:row-start-1 md:row-span-2 min-h-[140px] md:min-h-[272px]">
               <MockupFrame tabName="visualization.sql">
                 <img
                   src={project.col2img}

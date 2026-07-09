@@ -22,8 +22,8 @@ export default function HeroSection() {
   return (
     <section 
       id="hero" 
-      className="h-screen flex flex-col relative"
-      style={{ background: 'transparent', minHeight: 'max(100vh, 500px)' }}
+      className="flex flex-col relative w-full"
+      style={{ background: 'transparent', height: '100svh', minHeight: '500px' }}
     >
       {/* BACKGROUND VIDEO */}
       <motion.div 
