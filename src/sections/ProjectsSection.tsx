@@ -14,6 +14,38 @@ interface Project {
   col2img: string;  // right tall (viz output)
 }
 
+// Shared border radii for consistency across sticky cards
+const CARD_R = 'clamp(20px, 4vw, 56px)';
+
+/**
+ * MockupFrame
+ * A specialized container that mimics a macOS IDE window.
+ * Wraps project images to give them a "coding environment" aesthetic.
+ */
+const MockupFrame = ({ children, tabName }: { children: React.ReactNode, tabName: string }) => (
+  <div className="flex flex-col relative border border-[#ffffff15] bg-[#0d1117] h-full w-full shadow-2xl overflow-hidden">
+    {/* IDE Top Bar */}
+    <div className="flex items-center px-3 h-8 sm:h-10 bg-[#161b22] border-b border-[#ffffff10] shrink-0">
+      {/* macOS buttons */}
+      <div className="flex gap-1.5 shrink-0">
+        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]" />
+      </div>
+      {/* IDE Tab */}
+      <div className="ml-3 sm:ml-4 flex h-full items-end">
+         <div className="px-3 sm:px-4 py-1 sm:py-1.5 flex items-center gap-2 bg-[#0d1117] rounded-t-md border-t border-l border-r border-[#ffffff10] text-[0.6rem] sm:text-[0.7rem] text-[#8b949e] font-mono tracking-wide">
+           {tabName} <span className="ml-1 text-[#8b949e]/50 hover:text-white cursor-pointer transition-colors">x</span>
+         </div>
+      </div>
+    </div>
+    {/* Content Area */}
+    <div className="flex-1 relative overflow-hidden bg-[#0d1117]">
+      {children}
+    </div>
+  </div>
+);
+
 const projects: Project[] = [
   {
     number: '01',
@@ -25,7 +57,7 @@ const projects: Project[] = [
       'Built a full EDA pipeline with 10+ stakeholder-ready visualizations on delivery times, delay heatmaps & satisfaction.'
     ],
     githubUrl: 'https://github.com/rishav-raj-01/supply-chain-analysis-Project',
-    col1img1: '/p1-dash.png',
+    col1img1: '/mq-powerbi.png',
     col1img2: '/p1-code.png',
     col2img:  '/p1-viz.png',
   },
@@ -55,7 +87,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/rishav-raj-01/Target-Ecommerce-Analysis-Project',
     col1img1: '/p3-dash.png',
     col1img2: '/p3-code.png',
-    col2img:  '/p3-viz.png',
+    col2img:  '/p3-viz-target.png',
   },
   {
     number: '04',
@@ -75,8 +107,6 @@ const projects: Project[] = [
 ];
 
 const TOTAL = projects.length;
-const CARD_R = 'clamp(20px, 4vw, 56px)';
-const IMG_R  = 'clamp(12px, 2.5vw, 36px)';
 
 function ProjectCard({
   project,
@@ -85,8 +115,13 @@ function ProjectCard({
 }: {
   project: Project;
   index: number;
-  containerProgress: ReturnType<typeof useScroll>['scrollYProgress'];
+  containerProgress: any;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  useScroll({
+    target: cardRef,
+    offset: ['start end', 'end start'],
+  });
   const targetScale = 1 - (TOTAL - 1 - index) * 0.035;
   const scale = useTransform(containerProgress, [index / TOTAL, 1], [1, targetScale]);
   const opacity = useTransform(containerProgress, [index / TOTAL, (index + 0.7) / TOTAL], [1, 0.85]);
@@ -98,10 +133,10 @@ function ProjectCard({
         style={{ scale, opacity, top: `${index * 16 + 80}px`, transformOrigin: 'top center' }}
       >
         <div
-          className="border border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8 flex flex-col gap-4 md:gap-6"
+          className="border border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8 flex flex-col gap-4 md:gap-6 overflow-hidden"
           style={{ background: '#090909', borderRadius: CARD_R }}
         >
-          {/* ── HEADER ROW ──────────────────────────────────── */}
+          {/* HEADER ROW */}
           <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6 w-full">
             <div className="flex items-start gap-4 md:gap-6 lg:gap-8 max-w-3xl">
               <span
@@ -147,7 +182,7 @@ function ProjectCard({
             </a>
           </div>
 
-          {/* ── BULLET POINTS ─────────────────────────────── */}
+          {/* BULLET POINTS */}
           <div className="flex flex-col gap-2.5 sm:gap-3 pl-0 md:pl-[6.5rem] lg:pl-[8.5rem] pr-4 max-w-4xl mb-2 sm:mb-4">
             {project.bullets.map((bullet, i) => (
               <div key={i} className="flex items-start gap-3">
@@ -159,39 +194,44 @@ function ProjectCard({
             ))}
           </div>
 
-          {/* ── IMAGE GRID ───────────────────────────────── */}
-          <div className="flex gap-3 md:gap-4 mt-auto">
+          {/* IMAGE GRID (WITH PARALLAX) */}
+          <div className="flex gap-3 md:gap-4 mt-auto -mr-4 sm:-mr-6 md:-mr-8 -mb-4 sm:-mb-6 md:-mb-8">
             {/* Left 40% — 2 stacked */}
             <div className="flex flex-col gap-3 md:gap-4" style={{ flex: '0 0 40%' }}>
-              <div className="overflow-hidden" style={{ borderRadius: IMG_R, height: 'clamp(100px, 12vw, 160px)' }}>
-                <img
-                  src={project.col1img1}
-                  alt={`${project.name} dashboard`}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 hue-rotate-[-80deg]"
-                />
+              <div style={{ height: 'clamp(120px, 16vw, 200px)' }}>
+                <MockupFrame tabName="dashboard.tsx">
+                  <img
+                    src={project.col1img1}
+                    alt={`${project.name} dashboard`}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
+                  />
+                </MockupFrame>
               </div>
-              <div className="overflow-hidden" style={{ borderRadius: IMG_R, height: 'clamp(120px, 16vw, 240px)' }}>
-                <img
-                  src={project.col1img2}
-                  alt={`${project.name} code`}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 hue-rotate-[-80deg]"
-                />
+              <div style={{ height: 'clamp(140px, 18vw, 260px)' }}>
+                <MockupFrame tabName="pipeline.py">
+                  <img
+                    src={project.col1img2}
+                    alt={`${project.name} code`}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
+                  />
+                </MockupFrame>
               </div>
             </div>
 
             {/* Right 60% — 1 tall */}
-            <div
-              className="overflow-hidden"
-              style={{ flex: '0 0 calc(60% - 0.75rem)', borderRadius: IMG_R, minHeight: 'clamp(230px, 30vw, 420px)' }}
+            <div 
+              style={{ flex: '0 0 calc(60% - 0.75rem)', minHeight: 'clamp(272px, 35vw, 476px)' }}
             >
-              <img
-                src={project.col2img}
-                alt={`${project.name} visualization`}
-                loading="lazy"
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 hue-rotate-[-80deg]"
-              />
+              <MockupFrame tabName="visualization.sql">
+                <img
+                  src={project.col2img}
+                  alt={`${project.name} visualization`}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-left-top hover:scale-105 transition-transform duration-700"
+                />
+              </MockupFrame>
             </div>
           </div>
         </div>
@@ -200,6 +240,12 @@ function ProjectCard({
   );
 }
 
+/**
+ * ProjectsSection
+ * Renders a list of projects using a sticky-scroll animation.
+ * The `marginTop: '-2rem'` combined with border radius ensures this section
+ * seamlessly overlaps the previous section to create a rounded corner effect.
+ */
 export default function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -218,7 +264,7 @@ export default function ProjectsSection() {
           className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-16 sm:mb-20 md:mb-24"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Project
+          Projects
         </h2>
       </FadeIn>
 

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .filter-3d-cyan {
+    filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(130deg);
+    -webkit-filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(130deg);
+  }
+  .filter-3d-red {
+    filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(-45deg);
+    -webkit-filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(-45deg);
+  }
+  .filter-3d-magenta {
+    filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(280deg);
+    -webkit-filter: brightness(2.5) sepia(1) saturate(6) hue-rotate(280deg);
+  }
+}
+
 /* ===================== GLOBAL RESET ===================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -45,26 +60,24 @@ html {
 
 /* ===================== CONTACT PILL BUTTON ===================== */
 .contact-pill {
-  background: linear-gradient(123deg, #0c4a6e 7%, #0284c7 37%, #0ea5e9 72%, #7dd3fc 100%);
-  box-shadow: 0px 4px 4px rgba(14, 165, 233, 0.25), 4px 4px 12px #0284c7 inset;
-  outline: 2px solid white;
-  outline-offset: -3px;
-  border-radius: 9999px;
+  background: #4667A5;
+  border: 2px solid white;
+  border-radius: 8px;
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 1.125rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  border: none;
   transition: transform 0.25s ease, filter 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 .contact-pill:hover {
   transform: translateY(-2px);
-  filter: brightness(1.08);
+  filter: brightness(1.1);
 }
 
 /* ===================== GHOST PILL BUTTON ===================== */

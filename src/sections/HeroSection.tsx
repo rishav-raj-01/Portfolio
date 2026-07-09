@@ -1,15 +1,23 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 
-const navLinks = ['About', 'Skills', 'Projects', 'Contact'];
+const navLinks = ['About', 'Skills', 'Projects', 'Education', 'Contact'];
 
+// Smooth scroll helper for navbar links
 function scrollTo(id: string) {
   document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
 }
 
+/**
+ * HeroSection Component
+ * Represents the main landing area of the portfolio. 
+ * Includes the background video, navbar, and primary introductory text.
+ */
 export default function HeroSection() {
   const { scrollY } = useScroll();
-  const videoY = useTransform(scrollY, [0, 800], [0, 350]); // Parallax down
+  
+  // Parallax the video downwards slightly as the user scrolls to create a feeling of depth
+  const videoY = useTransform(scrollY, [0, 800], [0, 350]); 
 
   return (
     <section
@@ -17,7 +25,7 @@ export default function HeroSection() {
       className="h-screen flex flex-col relative"
       style={{ background: 'transparent' }}
     >
-      {/* ── BACKGROUND VIDEO ─────────────────────────────── */}
+      {/* BACKGROUND VIDEO */}
       <motion.div 
         className="absolute top-0 left-0 w-full z-0 pointer-events-none"
         style={{ y: videoY, height: '165vh' }}
@@ -31,6 +39,7 @@ export default function HeroSection() {
         >
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4" type="video/mp4" />
         </video>
+        
         {/* Gradient overlay to ensure text contrast and blend with next section */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0C0C0C]/30 via-transparent to-[#0C0C0C]" />
       </motion.div>
@@ -38,7 +47,7 @@ export default function HeroSection() {
       <div 
         className="relative z-10 flex flex-col h-full w-full"
       >
-        {/* ── NAVBAR ─────────────────────────────────────── */}
+        {/* NAVBAR */}
         <motion.nav 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,10 +55,10 @@ export default function HeroSection() {
           className="flex justify-between items-center px-4 sm:px-6 md:px-10 pt-6 md:pt-8 w-full"
         >
           <div className="flex gap-3 sm:gap-4 md:gap-6 items-center">
-              <a href="https://github.com/rishav-raj-01" target="_blank" rel="noreferrer" className="text-[#D7E2EA] hover:opacity-70 transition-opacity">
+              <a href="https://github.com/rishav-raj-01" target="_blank" rel="noopener noreferrer" className="text-[#D7E2EA] hover:opacity-70 transition-opacity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               </a>
-              <a href="https://www.linkedin.com/in/rishav-raj-7a6544362/" target="_blank" rel="noreferrer" className="text-[#D7E2EA] hover:opacity-70 transition-opacity">
+              <a href="https://www.linkedin.com/in/rishav-raj-7a6544362/" target="_blank" rel="noopener noreferrer" className="text-[#D7E2EA] hover:opacity-70 transition-opacity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rishavraj0217@gmail.com" target="_blank" rel="noopener noreferrer" className="text-[#D7E2EA] hover:opacity-70 transition-opacity">
@@ -76,7 +85,7 @@ export default function HeroSection() {
             </div>
           </motion.nav>
 
-        {/* ── HERO HEADING ───────────────────────────────── */}
+        {/* HERO HEADING */}
         <div className="overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -86,15 +95,15 @@ export default function HeroSection() {
             <h1
               className="hero-heading font-black uppercase tracking-tight leading-none
                 whitespace-nowrap w-full text-center
-                text-[10vw] sm:text-[11vw] md:text-[12vw] lg:text-[13vw]
+                text-[9vw] sm:text-[10vw] md:text-[11vw] lg:text-[12vw]
                 mt-6 sm:mt-4 md:-mt-5"
             >
-              Hi, i&apos;m Rishav
+              Hi, i&apos;m Rishav Raj
             </h1>
           </motion.div>
         </div>
 
-        {/* ── BOTTOM BAR ─────────────────────────────────── */}
+        {/* BOTTOM BAR */}
         <div className="mt-auto flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -112,16 +121,16 @@ export default function HeroSection() {
             transition={{ duration: 2.8, ease: "easeOut" }}
           >
             <button
-              className="contact-pill px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base"
+              className="contact-pill px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest"
               onClick={() => scrollTo('Contact')}
             >
-              Contact Me
+              CONTACT ME
             </button>
           </motion.div>
         </div>
       </div>
 
-      {/* ── SCROLL HINT ────────────────────────────────── */}
+      {/* SCROLL HINT */}
       <motion.div
         className="absolute bottom-5 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 z-20"
         initial={{ opacity: 0 }}

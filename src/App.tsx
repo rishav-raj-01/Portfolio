@@ -5,6 +5,7 @@ import AboutSection from './sections/AboutSection';
 import ServicesSection from './sections/ServicesSection';
 import StackSection from './sections/StackSection';
 import ProjectsSection from './sections/ProjectsSection';
+import EducationSection from './sections/EducationSection';
 import ContactSection from './sections/ContactSection';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <ServicesSection />
       <StackSection />
       <ProjectsSection />
+      <EducationSection />
       <ContactSection />
     </main>
   );

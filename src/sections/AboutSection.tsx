@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
-import AnimatedText from '../components/AnimatedText';
 
 function MarkerUnderline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -46,9 +45,9 @@ export default function AboutSection() {
         px-5 sm:px-8 md:px-10 py-20"
       style={{ background: '#0C0C0C' }}
     >
-      {/* ── DECORATIVE 3D IMAGES ─────────────────────── */}
+      {/* DECORATIVE 3D IMAGES */}
 
-      {/* Top-left: Moon */}
+      {/* Top-left: Moon (Blue one - leave as is) */}
       <FadeIn
         delay={0.1} x={-80} y={0} duration={0.9}
         className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] pointer-events-none select-none"
@@ -61,7 +60,7 @@ export default function AboutSection() {
         />
       </FadeIn>
 
-      {/* Bottom-left: 3D Object */}
+      {/* Bottom-left: 3D Object (Cyan) */}
       <FadeIn
         delay={0.25} x={-80} y={0} duration={0.9}
         className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] pointer-events-none select-none"
@@ -70,11 +69,11 @@ export default function AboutSection() {
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
           alt=""
           aria-hidden="true"
-          className="w-[100px] sm:w-[140px] md:w-[180px] float-anim-2"
+          className="w-[100px] sm:w-[140px] md:w-[180px] float-anim-2 filter-3d-cyan"
         />
       </FadeIn>
 
-      {/* Top-right: Lego */}
+      {/* Top-right: Lego (Vivid Red) */}
       <FadeIn
         delay={0.15} x={80} y={0} duration={0.9}
         className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] pointer-events-none select-none"
@@ -83,11 +82,11 @@ export default function AboutSection() {
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
           alt=""
           aria-hidden="true"
-          className="w-[120px] sm:w-[160px] md:w-[210px] float-anim-3"
+          className="w-[120px] sm:w-[160px] md:w-[210px] float-anim-3 filter-3d-red"
         />
       </FadeIn>
 
-      {/* Bottom-right: 3D Group */}
+      {/* Bottom-right: 3D Group (Pink/Magenta) */}
       <FadeIn
         delay={0.3} x={80} y={0} duration={0.9}
         className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] pointer-events-none select-none"
@@ -96,11 +95,11 @@ export default function AboutSection() {
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
           alt=""
           aria-hidden="true"
-          className="w-[130px] sm:w-[170px] md:w-[220px] float-anim-4"
+          className="w-[130px] sm:w-[170px] md:w-[220px] float-anim-4 filter-3d-magenta"
         />
       </FadeIn>
 
-      {/* ── MAIN CONTENT ─────────────────────────────── */}
+      {/* MAIN CONTENT */}
       <div className="relative z-10 flex flex-col items-center text-center gap-10 sm:gap-14 md:gap-16 max-w-2xl">
         {/* Heading */}
         <FadeIn delay={0} y={40}>
@@ -122,21 +121,22 @@ export default function AboutSection() {
               "I'm just getting started - and that means I bring energy, adaptability, and zero bad habits to every project I touch."
             ].map((p, i) => (
               <div key={i} className="relative">
-                <AnimatedText
-                  text={p}
+                <p
                   className="font-medium leading-relaxed"
                   style={{ color: '#D7E2EA', fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)' }}
-                />
+                >
+                  {p}
+                </p>
               </div>
             ))}
             <MarkerUnderline />
           </div>
 
           <button
-            className="contact-pill px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base"
+            className="contact-pill px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Contact Me
+            CONTACT ME
           </button>
         </div>
       </div>

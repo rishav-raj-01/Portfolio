@@ -5,27 +5,27 @@ const services = [
   {
     number: '01',
     name: 'DATA ANALYSIS & EDA',
-    description: 'Exploring datasets end-to-end - cleaning, wrangling, and surfacing hidden patterns across 100,000+ records to find what actually moves the needle.',
+    description: "I take messy, complex datasets and turn them into clear insights. From cleaning up 100,000+ records to spotting hidden trends, I do the heavy lifting to figure out what's really driving the business.",
   },
   {
     number: '02',
     name: 'SQL & DATABASE WORK',
-    description: 'Writing performant MySQL / PostgreSQL queries - window functions, CTEs, joins on multi-table schemas to deliver YoY growth, retention, and revenue insights.',
+    description: "I write fast, reliable SQL queries in MySQL and PostgreSQL to get the data you actually need. Whether it's tracking year-over-year growth or mapping out customer retention, I make sure the right data is pulled efficiently from complex databases.",
   },
   {
     number: '03',
     name: 'DASHBOARDS & VISUALIZATION',
-    description: 'Building stakeholder-ready visualizations with Matplotlib, Seaborn, Tableau and Power BI - turning numbers into stories executives can act on.',
+    description: "I believe data should be easy to understand at a glance. I build interactive dashboards and clean charts using Tableau, Power BI, and Python, turning confusing spreadsheets into visual stories that anyone can read and act on.",
   },
   {
     number: '04',
     name: 'RISK & CUSTOMER ANALYTICS',
-    description: 'Designing scoring models, segmentation, and risk tier profiling - translating raw signals into clear policy recommendations and revenue-at-risk reductions.',
+    description: "I build models that help identify patterns in customer behavior and potential risks before they become problems. By looking closely at the data, I provide clear recommendations that help protect revenue and guide smart business decisions.",
   },
   {
     number: '05',
     name: 'INSIGHT STORYTELLING',
-    description: 'Turning analysis into narrative - slides, decks, and reports that communicate the why behind the what to non-technical stakeholders.',
+    description: "Numbers don't mean much if you can't explain them. I specialize in breaking down complex analysis into plain English, creating simple, compelling presentations that help non-technical teams understand exactly what to do next.",
   },
 ];
 

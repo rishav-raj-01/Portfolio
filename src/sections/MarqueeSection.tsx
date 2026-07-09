@@ -51,7 +51,7 @@ export default function MarqueeSection() {
       {/* Label Removed */}
 
       <div className="flex flex-col gap-4">
-        {/* ── ROW 1 (scroll → right) ── */}
+        {/* ROW 1 (scroll → right) */}
         <motion.div className="flex gap-4" style={{ x: x1, willChange: 'transform' }}>
           {row1.map((item, i) => (
             <div
@@ -78,7 +78,7 @@ export default function MarqueeSection() {
           ))}
         </motion.div>
 
-        {/* ── ROW 2 (scroll → left) ── */}
+        {/* ROW 2 (scroll → left) */}
         <motion.div className="flex gap-4" style={{ x: x2, willChange: 'transform' }}>
           {row2.map((item, i) => (
             <div
