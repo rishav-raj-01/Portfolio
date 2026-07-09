@@ -28,8 +28,7 @@ const row2Items = [
 const row1 = [...row1Items, ...row1Items, ...row1Items];
 const row2 = [...row2Items, ...row2Items, ...row2Items];
 
-const CARD_W = 400;
-const CARD_H = 250;
+// Dimensions are handled via responsive Tailwind classes below
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -56,8 +55,7 @@ export default function MarqueeSection() {
           {row1.map((item, i) => (
             <div
               key={i}
-              className="flex-shrink-0 rounded-2xl overflow-hidden relative group"
-              style={{ width: CARD_W, height: CARD_H }}
+              className="flex-shrink-0 rounded-2xl overflow-hidden relative group w-[70vw] sm:w-[350px] md:w-[400px] h-[45vw] sm:h-[220px] md:h-[250px]"
             >
               <img
                 src={item.src}
@@ -83,8 +81,7 @@ export default function MarqueeSection() {
           {row2.map((item, i) => (
             <div
               key={i}
-              className="flex-shrink-0 rounded-2xl overflow-hidden relative group"
-              style={{ width: CARD_W, height: CARD_H }}
+              className="flex-shrink-0 rounded-2xl overflow-hidden relative group w-[70vw] sm:w-[350px] md:w-[400px] h-[45vw] sm:h-[220px] md:h-[250px]"
             >
               <img
                 src={item.src}

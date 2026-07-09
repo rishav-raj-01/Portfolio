@@ -195,10 +195,10 @@ function ProjectCard({
           </div>
 
           {/* IMAGE GRID (WITH PARALLAX) */}
-          <div className="flex gap-3 md:gap-4 mt-auto -mr-4 sm:-mr-6 md:-mr-8 -mb-4 sm:-mb-6 md:-mb-8">
-            {/* Left 40% — 2 stacked */}
-            <div className="flex flex-col gap-3 md:gap-4" style={{ flex: '0 0 40%' }}>
-              <div style={{ height: 'clamp(120px, 16vw, 200px)' }}>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-auto -mr-4 sm:-mr-6 md:-mr-8 -mb-4 sm:-mb-6 md:-mb-8 h-full md:h-auto overflow-hidden">
+            {/* Top 40% (mobile) / Left 40% (desktop) */}
+            <div className="flex flex-col gap-3 md:gap-4 w-full md:w-[40%] h-1/2 md:h-auto">
+              <div className="flex-1 md:flex-none" style={{ minHeight: '120px' }}>
                 <MockupFrame tabName="dashboard.tsx">
                   <img
                     src={project.col1img1}
@@ -208,7 +208,7 @@ function ProjectCard({
                   />
                 </MockupFrame>
               </div>
-              <div style={{ height: 'clamp(140px, 18vw, 260px)' }}>
+              <div className="flex-1 md:flex-none" style={{ minHeight: '140px' }}>
                 <MockupFrame tabName="pipeline.py">
                   <img
                     src={project.col1img2}
@@ -220,10 +220,8 @@ function ProjectCard({
               </div>
             </div>
 
-            {/* Right 60% — 1 tall */}
-            <div 
-              style={{ flex: '0 0 calc(60% - 0.75rem)', minHeight: 'clamp(272px, 35vw, 476px)' }}
-            >
+            {/* Bottom 60% (mobile) / Right 60% (desktop) */}
+            <div className="w-full md:w-[60%] flex-1 md:flex-none min-h-[200px] md:min-h-[272px]">
               <MockupFrame tabName="visualization.sql">
                 <img
                   src={project.col2img}

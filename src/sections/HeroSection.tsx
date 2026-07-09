@@ -97,18 +97,18 @@ export default function HeroSection() {
                 text-[9vw] sm:text-[10vw] md:text-[11vw] lg:text-[12vw]
                 mt-6 sm:mt-4 md:-mt-5"
             >
-              Hi, i&apos;m Rishav Raj
+              Hi, i&apos;m Rishav
             </h1>
           </motion.div>
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="mt-auto flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
+        <div className="mt-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-0 px-4 sm:px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 2.5, ease: "easeOut" }}
-            className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
+            className="font-light uppercase tracking-wide leading-snug max-w-[280px] md:max-w-[260px] text-center md:text-left"
             style={{ color: '#D7E2EA', fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
           >
               a data analyst driven by crafting striking and unforgettable insights from data
