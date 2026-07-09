@@ -31,14 +31,14 @@ export default function HeroSection() {
         style={{ y: videoY, height: '165vh' }}
       >
         <video
-          autoPlay
-          loop
-          muted
-          playsInline
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4"
+          autoPlay={true}
+          loop={true}
+          muted={true}
+          playsInline={true}
+          crossOrigin="anonymous"
           className="w-full h-full object-cover opacity-60"
-        >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4" type="video/mp4" />
-        </video>
+        />
         
         {/* Gradient overlay to ensure text contrast and blend with next section */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0C0C0C]/30 via-transparent to-[#0C0C0C]" />
