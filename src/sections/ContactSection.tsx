@@ -18,7 +18,7 @@ export default function ContactSection() {
       <FadeIn delay={0} y={40}>
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-4"
-          style={{ fontSize: 'clamp(3rem, 12vw, 140px)' }}
+          style={{ fontSize: 'clamp(2.5rem, 12vw, 140px)' }}
         >
           Contact
         </h2>

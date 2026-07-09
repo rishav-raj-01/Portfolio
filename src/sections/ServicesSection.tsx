@@ -42,7 +42,7 @@ export default function ServicesSection() {
       <FadeIn delay={0} y={30}>
         <h2
           className="font-black uppercase text-center mb-16 sm:mb-20 md:mb-24"
-          style={{ color: '#0C0C0C', fontSize: 'clamp(4rem, 15vw, 200px)', lineHeight: 0.8, letterSpacing: '-0.02em' }}
+          style={{ color: '#0C0C0C', fontSize: 'clamp(2.5rem, 15vw, 200px)', lineHeight: 0.8, letterSpacing: '-0.02em' }}
         >
           WHAT I DO
         </h2>
@@ -66,7 +66,7 @@ export default function ServicesSection() {
                 className="font-black leading-none flex-shrink-0 select-none"
                 style={{
                   color: '#0C0C0C',
-                  fontSize: 'clamp(5rem, 14vw, 180px)',
+                  fontSize: 'clamp(2.5rem, 14vw, 180px)',
                   letterSpacing: '-0.04em',
                 }}
               >

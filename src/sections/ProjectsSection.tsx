@@ -124,26 +124,25 @@ function ProjectCard({
   });
   const targetScale = 1 - (TOTAL - 1 - index) * 0.035;
   const scale = useTransform(containerProgress, [index / TOTAL, 1], [1, targetScale]);
-  const opacity = useTransform(containerProgress, [index / TOTAL, (index + 0.7) / TOTAL], [1, 0.85]);
 
   return (
     <div className="h-[115vh] sm:h-[105vh] relative">
       <motion.div
         className="sticky w-full"
-        style={{ scale, opacity, top: `${index * 16 + 80}px`, transformOrigin: 'top center' }}
+        style={{ scale, top: `${index * 16 + 40}px`, transformOrigin: 'top center' }}
       >
         <div
-          className="border border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8 flex flex-col gap-4 md:gap-6 overflow-hidden"
-          style={{ background: '#090909', borderRadius: CARD_R }}
+          className="relative border border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8 flex flex-col gap-4 md:gap-6 overflow-hidden overflow-y-auto"
+          style={{ background: '#090909', borderRadius: CARD_R, height: 'max(calc(100svh - 60px), 600px)' }}
         >
           {/* HEADER ROW */}
-          <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6 w-full">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6 w-full flex-shrink-0">
             <div className="flex items-start gap-4 md:gap-6 lg:gap-8 max-w-3xl">
               <span
                 className="font-black leading-none select-none flex-shrink-0"
                 style={{
                   color: '#D7E2EA',
-                  fontSize: 'clamp(3.5rem, 8vw, 100px)',
+                  fontSize: 'clamp(2.5rem, 8vw, 100px)',
                   letterSpacing: '-0.04em',
                 }}
               >
@@ -183,7 +182,7 @@ function ProjectCard({
           </div>
 
           {/* BULLET POINTS */}
-          <div className="flex flex-col gap-2.5 sm:gap-3 pl-0 md:pl-[6.5rem] lg:pl-[8.5rem] pr-4 max-w-4xl mb-2 sm:mb-4">
+          <div className="flex flex-col gap-2.5 sm:gap-3 pl-0 md:pl-[6.5rem] lg:pl-[8.5rem] pr-4 max-w-4xl mb-2 sm:mb-4 flex-shrink-0">
             {project.bullets.map((bullet, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span style={{ color: '#38bdf8', marginTop: '2px' }}>—</span>
@@ -260,7 +259,7 @@ export default function ProjectsSection() {
       <FadeIn delay={0} y={40}>
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-16 sm:mb-20 md:mb-24"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+          style={{ fontSize: 'clamp(2.5rem, 12vw, 160px)' }}
         >
           Projects
         </h2>

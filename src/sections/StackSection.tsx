@@ -33,7 +33,7 @@ export default function StackSection() {
       <FadeIn delay={0} y={40}>
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-16 sm:mb-20 md:mb-24"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+          style={{ fontSize: 'clamp(2.5rem, 12vw, 160px)' }}
         >
           Tech Stack
         </h2>
